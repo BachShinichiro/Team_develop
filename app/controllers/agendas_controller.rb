@@ -25,15 +25,15 @@ class AgendasController < ApplicationController
     @agenda.destroy
     @agenda.team.assigns.each do |assaign|
     if agenda.user == current_user || agenda.team.owner == current_user
-      @agenda.destroy
-      redirect_to dashboard_url
+    @agenda.destroy
+    redirect_to dashboard_url
     else
       redirect_to dashboard_url
     end
   end
 
 
-  private
+   private
 
   def set_agenda
     @agenda = Agenda.find(params[:id])
