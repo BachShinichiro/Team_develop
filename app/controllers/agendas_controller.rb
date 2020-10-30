@@ -22,15 +22,20 @@ class AgendasController < ApplicationController
   end
 
   def destroy
-    @agenda.destroy
-    @agenda.team.assigns.each do |assaign|
-    if agenda.user == current_user || agenda.team.owner == current_user
-    @agenda.destroy
-    redirect_to dashboard_url
+    if @agenda.user == current_user || @agenda.team.owner == current_user
+      @agenda.destroy
+      @agenda.team.assigns.each do |assaign|
+        puts assaign.user.id
+        @email = assaign.user.email
+        @title = @agenda.title
+      end
+      AgendaDeleteMailer.agenda_delete_mail(@email, @title).deliver
+      redirect_to dashboard_url, notice: I18n.t('views.messages.delete_agenda')
     else
-      redirect_to dashboard_url
+      redirect_to dashboard_url, notice: '削除できるのはオーナーか作者のみです'
     end
   end
+
 
 
    private
