@@ -258,6 +258,7 @@ ja:
       edit_profile: 'プロフィールを編集'
       team_you_belong_to: '所属しているチーム'
       posted_articles: '投稿した記事一覧'
+      cannot_delete_agenda: 'アジェンダを削除出来るのは作ったユーザー、もしくは紐付いているチームのリーダーのみです'
       agenda_is_deleted: "%{agenda}が削除されました"  
     button:
       submit: '投稿'
