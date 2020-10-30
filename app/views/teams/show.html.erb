@@ -44,9 +44,9 @@
                       <td><%= image_tag 'default.jpg', size: '40x40' %></td>
                       <td><%= assign.user.email %></td>
                       <td>
-                        <% if ( current_user.id == assign.team.owner.id ) && ( current_user.id != assign.user.id ) %>      # 追加
-                          <%= link_to I18n.t('views.button.permissions_moving'), change_owner_team_path(@team.id, assign: assign ), method: :patch, class: 'btn btn-sm btn-info' %>
-                        <% end %>
+                      <% if ( current_user.id == assign.team.owner.id ) && ( current_user.id != assign.user.id ) %>
+                        <%= link_to I18n.t('views.button.permissions_moving'), change_owner_team_path(@team.id, assign: assign ), method: :patch, class: 'btn btn-sm btn-info' %>
+                      <% end %>
                       </td>
                     </tr>
                   <% end %>
